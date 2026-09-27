@@ -1,0 +1,71 @@
+# Proves the workflow can sign in to all three clouds with no stored secret,
+# before any ingestion depends on it.
+#
+# GitHub signs a short-lived OIDC token for the run. Each cloud checks the
+# issuer and the exact subject, which includes refs/heads/main, and swaps it
+# for its own short-lived credentials. The values below are repository
+# variables, not secrets. None of them grants anything on its own.
+#
+# Each job runs one read the identity is actually allowed to do, so a green
+# run means the permissions work as well as the sign-in.
+name: signin-check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  gcp:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Sign in to GCP
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - uses: google-github-actions/setup-gcloud@v3
+
+      # The service account has no roles yet, so the proof is that an access
+      # token for it can be minted at all. That only works if the pool, the
+      # provider and the impersonation binding all accept this run.
+      - name: Mint a token as the service account
+        run: |
+          gcloud auth list
+          gcloud auth print-access-token > /dev/null
+          echo "Token issued for ${{ vars.GCP_SERVICE_ACCOUNT }}"
+
+  aws:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Sign in to AWS
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: eu-west-2
+
+      - name: Read the cost export
+        run: |
+          aws sts get-caller-identity --query Arn --output text
+          aws s3 ls s3://moyoadey-cost-exports/cost-exports/ --recursive | wc -l
+
+  azure:
+    runs-on: ubuntu-24.04
+    steps:
+      # The identity has a role on one blob container and nothing at
+      # subscription level, so there is no subscription for login to select.
+      - name: Sign in to Azure
+        uses: azure/login@v3
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          allow-no-subscriptions: true
+
+      - name: Read the cost export
+        run: |
+          az storage blob list --account-name moyoadeycostexports \
+            --container-name cost-exports --prefix azure/ --auth-mode login \
+            --query "length(@)" -o tsv
