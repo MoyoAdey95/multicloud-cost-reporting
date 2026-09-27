@@ -90,3 +90,16 @@ variable "github_sub_prefix" {
   type        = string
   default     = "repo:MoyoAdey95@212127446/multicloud-cost-reporting@1383789639"
 }
+
+# Read from the export definition with aws bcm-data-exports get-export.
+variable "aws_export_bucket" {
+  description = "S3 bucket the AWS Data Exports FOCUS export writes to."
+  type        = string
+  default     = "moyoadey-cost-exports"
+}
+
+variable "aws_export_prefix" {
+  description = "Prefix under which the export writes its files."
+  type        = string
+  default     = "cost-exports"
+}
