@@ -105,3 +105,13 @@ module "github_oidc_azure" {
 }
 
 data "azurerm_client_config" "current" {}
+
+module "ingestion" {
+  source = "../../modules/ingestion"
+
+  project_id          = var.gcp_project
+  location            = var.bq_location
+  landing_bucket_name = "moyo-cost-reporting-landing"
+  raw_dataset_id      = "cost_raw"
+  ingest_member       = module.github_oidc_gcp.service_account_member
+}

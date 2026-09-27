@@ -22,3 +22,13 @@ output "azure_tenant_id" {
   description = "Entra tenant the identity belongs to."
   value       = data.azurerm_client_config.current.tenant_id
 }
+
+output "landing_bucket" {
+  description = "Bucket the workflow copies export files into."
+  value       = module.ingestion.landing_bucket
+}
+
+output "raw_dataset_id" {
+  description = "Dataset the export files are loaded into."
+  value       = module.ingestion.raw_dataset_id
+}
