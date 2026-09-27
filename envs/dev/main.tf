@@ -63,3 +63,45 @@ module "github_oidc_aws" {
   github_subject   = local.github_subject
   policy_json      = data.aws_iam_policy_document.cost_export_read.json
 }
+
+# The Azure side of this repo gets its own resource group, so tearing down
+# another lab never reaches it. The cost export itself stays in
+# rg-cost-exports, which was built by hand before this repo existed.
+resource "azurerm_resource_group" "this" {
+  name     = "rg-cost-reporting"
+  location = var.azure_location
+  tags     = local.common_tags
+}
+
+# Built from its parts rather than read with a data source. The storage
+# account data source also fetches the account keys, and those would then
+# sit in the state file.
+locals {
+  azure_export_container_id = join("/", [
+    "/subscriptions/${var.azure_subscription_id}",
+    "resourceGroups/${var.azure_export_resource_group}",
+    "providers/Microsoft.Storage/storageAccounts/${var.azure_export_storage_account}",
+    "blobServices/default/containers/${var.azure_export_container}",
+  ])
+}
+
+module "github_oidc_azure" {
+  source = "../../modules/github-oidc-azure"
+
+  identity_name       = "id-github-cost-ingest"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  credential_name     = "github-main"
+  github_subject      = local.github_subject
+  tags                = local.common_tags
+
+  # Read on the one container, not the storage account or the subscription.
+  role_assignments = {
+    export-read = {
+      scope = local.azure_export_container_id
+      role  = "Storage Blob Data Reader"
+    }
+  }
+}
+
+data "azurerm_client_config" "current" {}

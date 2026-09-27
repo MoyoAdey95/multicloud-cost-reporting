@@ -12,3 +12,13 @@ output "aws_role_arn" {
   description = "Role the GitHub workflow assumes in AWS."
   value       = module.github_oidc_aws.role_arn
 }
+
+output "azure_client_id" {
+  description = "Client ID the GitHub workflow signs in to Azure with."
+  value       = module.github_oidc_azure.client_id
+}
+
+output "azure_tenant_id" {
+  description = "Entra tenant the identity belongs to."
+  value       = data.azurerm_client_config.current.tenant_id
+}

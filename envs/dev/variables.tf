@@ -103,3 +103,22 @@ variable "aws_export_prefix" {
   type        = string
   default     = "cost-exports"
 }
+
+# Read from the export definition with az costmanagement export show.
+variable "azure_export_resource_group" {
+  description = "Resource group of the storage account the Azure cost export writes to."
+  type        = string
+  default     = "rg-cost-exports"
+}
+
+variable "azure_export_storage_account" {
+  description = "Storage account the Azure cost export writes to."
+  type        = string
+  default     = "moyoadeycostexports"
+}
+
+variable "azure_export_container" {
+  description = "Blob container the Azure cost export writes to."
+  type        = string
+  default     = "cost-exports"
+}
