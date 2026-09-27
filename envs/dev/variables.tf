@@ -68,3 +68,25 @@ variable "owner" {
   type        = string
   default     = "moyo"
 }
+
+variable "github_owner_id" {
+  description = "Numeric ID of the GitHub account that owns this repository."
+  type        = string
+  default     = "212127446"
+}
+
+variable "github_repository_id" {
+  description = "Numeric ID of this repository on GitHub."
+  type        = string
+  default     = "1383789639"
+}
+
+# Read from GitHub with
+# gh api repos/MoyoAdey95/multicloud-cost-reporting/actions/oidc/customization/sub
+# rather than written by hand. The repo uses the immutable form, with the
+# owner and repository IDs in it.
+variable "github_sub_prefix" {
+  description = "Start of the OIDC sub claim GitHub issues for this repository."
+  type        = string
+  default     = "repo:MoyoAdey95@212127446/multicloud-cost-reporting@1383789639"
+}

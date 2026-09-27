@@ -7,4 +7,7 @@ locals {
     owner        = var.owner
     "managed-by" = "terraform"
   }
+
+  # Only runs on main can sign in to any of the three clouds.
+  github_subject = "${var.github_sub_prefix}:ref:refs/heads/main"
 }
