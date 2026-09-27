@@ -1,0 +1,45 @@
+# Copies the AWS and Azure cost exports into BigQuery, next to the GCP billing
+# export that is already there.
+#
+# Signs in the same way as signin-check.yml. Nothing here is a secret. The
+# bucket, prefix and dataset names are written out because they are fixed by
+# the exports and by Terraform.
+name: ingest
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  GCP_PROJECT: multicloud-cost-reporting-lab
+  LANDING_BUCKET: moyo-cost-reporting-landing
+  RAW_DATASET: cost_raw
+
+jobs:
+  aws:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Sign in to GCP
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - uses: google-github-actions/setup-gcloud@v3
+
+      - name: Sign in to AWS
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: eu-west-2
+
+      - name: Load the AWS FOCUS export
+        env:
+          EXPORT_BUCKET: moyoadey-cost-exports
+          EXPORT_PREFIX: cost-exports/focus-daily
+        run: bash ingest/aws.sh
