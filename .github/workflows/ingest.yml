@@ -7,7 +7,17 @@
 name: ingest
 
 on:
+  # Azure writes its file at about 20:10 UTC, so 21:00 leaves room. GitHub
+  # can start scheduled runs late when it is busy, which does not matter here.
+  schedule:
+    - cron: "0 21 * * *"
   workflow_dispatch:
+
+# A manual run and the scheduled one both replace the same partitions, so
+# they queue behind each other rather than overlap.
+concurrency:
+  group: ingest
+  cancel-in-progress: false
 
 permissions:
   id-token: write
