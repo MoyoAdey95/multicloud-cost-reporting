@@ -41,3 +41,37 @@ resource "google_bigquery_table" "focus" {
     use_legacy_sql = false
   }
 }
+
+# The union reads the three provider views, and allocation reads the union, so
+# each has to wait for the one before it to exist.
+resource "google_bigquery_table" "focus_all" {
+  project             = var.project_id
+  dataset_id          = google_bigquery_dataset.reporting.dataset_id
+  table_id            = "focus_all"
+  deletion_protection = false
+
+  view {
+    query = templatefile("${path.module}/sql/focus_all.sql", {
+      dataset = "${var.project_id}.${google_bigquery_dataset.reporting.dataset_id}"
+    })
+    use_legacy_sql = false
+  }
+
+  depends_on = [google_bigquery_table.focus]
+}
+
+resource "google_bigquery_table" "cost_allocation" {
+  project             = var.project_id
+  dataset_id          = google_bigquery_dataset.reporting.dataset_id
+  table_id            = "cost_allocation"
+  deletion_protection = false
+
+  view {
+    query = templatefile("${path.module}/sql/cost_allocation.sql", {
+      dataset = "${var.project_id}.${google_bigquery_dataset.reporting.dataset_id}"
+    })
+    use_legacy_sql = false
+  }
+
+  depends_on = [google_bigquery_table.focus_all]
+}
