@@ -4,9 +4,9 @@ Two things have to exist before `terraform init` can run. A GCP project for ever
 
 ## The project
 
-Everything on the GCP side lives in its own project, `multicloud-cost-reporting-lab`. This lab stays up for as long as the reporting is needed, and it holds an identity pool that GitHub Actions is trusted to sign in through, so it gets its own boundary. Deleting the project removes everything in it.
+Everything on the GCP side lives in its own project, `multicloud-cost-reporting-lab`. The lab was built to stay up for as long as the reporting was needed, and it held an identity pool that GitHub Actions was trusted to sign in through, so it got its own boundary. Deleting the project removes everything in it, which is how it was torn down.
 
-The Cloud Billing export itself stays in the sandbox project, `moyo-cloud-lab`, where it was switched on, and this project reads it from there. Pointing an export somewhere new starts it again from nothing, and the existing data goes back to 1 July.
+The Cloud Billing export itself stays in the sandbox project, `moyo-cloud-lab`, where it was switched on, and this project read it from there. Pointing an export somewhere new starts it again from nothing, and the existing data goes back to 1 July.
 
 I created the project in the console with no organisation, the same as my other projects, and linked it to the same billing account. Two of the account's three budgets have no project filter, so they cover the new project without any change. The third is scoped to the sandbox project only.
 
