@@ -1,0 +1,9 @@
+completed	success	ingest	ingest	main	schedule	37081180736	57s	2026-10-03T00:14:01Z
+completed	success	ingest	ingest	main	schedule	36946734730	1m6s	2026-10-02T00:35:14Z
+completed	success	ingest	ingest	main	schedule	36796067264	42s	2026-10-01T00:25:00Z
+completed	success	ingest	ingest	main	schedule	36648706386	1m20s	2026-09-30T00:07:10Z
+completed	success	ingest	ingest	main	schedule	36505127042	48s	2026-09-29T00:51:39Z
+completed	success	ingest	ingest	main	schedule	36359546241	48s	2026-09-27T23:41:33Z
+completed	success	ingest	ingest	main	workflow_dispatch	36333719549	45s	2026-09-27T16:34:07Z
+completed	success	ingest	ingest	main	workflow_dispatch	36333500533	41s	2026-09-27T16:30:34Z
+completed	success	ingest	ingest	main	workflow_dispatch	36333348257	43s	2026-09-27T16:28:07Z

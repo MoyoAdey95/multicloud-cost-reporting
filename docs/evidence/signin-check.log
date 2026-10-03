@@ -1,0 +1,209 @@
+azure	Set up job	﻿2026-09-27T15:56:06.3000555Z Current runner version: '2.337.0'
+azure	Set up job	2026-09-27T15:56:06.3027206Z ##[group]Runner Image Provisioner
+azure	Set up job	2026-09-27T15:56:06.3028141Z Hosted Compute Agent
+azure	Set up job	2026-09-27T15:56:06.3028812Z Version: 20260828.587
+azure	Set up job	2026-09-27T15:56:06.3029671Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+azure	Set up job	2026-09-27T15:56:06.3030550Z Build Date: 2026-08-28T16:44:25Z
+azure	Set up job	2026-09-27T15:56:06.3031277Z Worker ID: {68c431cd-84eb-40fe-bc8b-f2fe7ef52a8b}
+azure	Set up job	2026-09-27T15:56:06.3032002Z Azure Region: eastus2
+azure	Set up job	2026-09-27T15:56:06.3032684Z ##[endgroup]
+azure	Set up job	2026-09-27T15:56:06.3034327Z ##[group]Operating System
+azure	Set up job	2026-09-27T15:56:06.3035076Z Ubuntu
+azure	Set up job	2026-09-27T15:56:06.3035628Z 24.04.5
+azure	Set up job	2026-09-27T15:56:06.3036141Z LTS
+azure	Set up job	2026-09-27T15:56:06.3036760Z ##[endgroup]
+azure	Set up job	2026-09-27T15:56:06.3037326Z ##[group]Runner Image
+azure	Set up job	2026-09-27T15:56:06.3038859Z Image: ubuntu-24.04
+azure	Set up job	2026-09-27T15:56:06.3040067Z Version: 20260920.314.1
+azure	Set up job	2026-09-27T15:56:06.3041838Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260920.314/images/ubuntu/Ubuntu2404-Readme.md
+azure	Set up job	2026-09-27T15:56:06.3044125Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260920.314
+azure	Set up job	2026-09-27T15:56:06.3045188Z ##[endgroup]
+azure	Set up job	2026-09-27T15:56:06.3046344Z ##[group]GITHUB_TOKEN Permissions
+azure	Set up job	2026-09-27T15:56:06.3048554Z Contents: read
+azure	Set up job	2026-09-27T15:56:06.3049256Z Metadata: read
+azure	Set up job	2026-09-27T15:56:06.3050154Z ##[endgroup]
+azure	Set up job	2026-09-27T15:56:06.3052744Z Secret source: Actions
+azure	Set up job	2026-09-27T15:56:06.3053712Z Cache mode: write
+azure	Set up job	2026-09-27T15:56:06.3054773Z Prepare workflow directory
+azure	Set up job	2026-09-27T15:56:06.3380286Z Prepare all required actions
+azure	Set up job	2026-09-27T15:56:06.3427968Z Getting action download info
+azure	Set up job	2026-09-27T15:56:06.5833353Z Download action repository 'azure/login@v3' (SHA:a641126d1b8aa4d1fa005f4f92df94a3a4c4c906)
+azure	Set up job	2026-09-27T15:56:06.8338761Z Complete job name: azure
+azure	Sign in to Azure	﻿2026-09-27T15:56:06.9254308Z ##[group]Run azure/login@v3
+azure	Sign in to Azure	2026-09-27T15:56:06.9255189Z with:
+azure	Sign in to Azure	2026-09-27T15:56:06.9255709Z   client-id: d5953675-9ad7-4f1e-94e9-1fe5f644d32c
+azure	Sign in to Azure	2026-09-27T15:56:06.9256404Z   tenant-id: f4610659-b157-4957-872b-a25094a4c3a4
+azure	Sign in to Azure	2026-09-27T15:56:06.9257060Z   allow-no-subscriptions: true
+azure	Sign in to Azure	2026-09-27T15:56:06.9257609Z   enable-AzPSSession: false
+azure	Sign in to Azure	2026-09-27T15:56:06.9258131Z   environment: azurecloud
+azure	Sign in to Azure	2026-09-27T15:56:06.9258673Z   audience: api://AzureADTokenExchange
+azure	Sign in to Azure	2026-09-27T15:56:06.9259262Z   auth-type: SERVICE_PRINCIPAL
+azure	Sign in to Azure	2026-09-27T15:56:06.9260000Z   mask-client-id: true
+azure	Sign in to Azure	2026-09-27T15:56:06.9260714Z ##[endgroup]
+azure	Sign in to Azure	2026-09-27T15:56:06.9772621Z Running Azure CLI Login.
+azure	Sign in to Azure	2026-09-27T15:56:08.4653353Z [command]/usr/bin/az cloud set -n azurecloud
+azure	Sign in to Azure	2026-09-27T15:56:08.8482827Z Done setting cloud: "azurecloud"
+azure	Sign in to Azure	2026-09-27T15:56:08.9194611Z Federated token details:
+azure	Sign in to Azure	2026-09-27T15:56:08.9195635Z  issuer - https://token.actions.githubusercontent.com
+azure	Sign in to Azure	2026-09-27T15:56:08.9196727Z  subject claim - repo:MoyoAdey95@212127446/multicloud-cost-reporting@1383789639:ref:refs/heads/main
+azure	Sign in to Azure	2026-09-27T15:56:08.9197785Z  audience - api://AzureADTokenExchange
+azure	Sign in to Azure	2026-09-27T15:56:08.9198984Z  job_workflow_ref - MoyoAdey95/multicloud-cost-reporting/.github/workflows/signin-check.yml@refs/heads/main
+azure	Sign in to Azure	2026-09-27T15:56:08.9200296Z Attempting Azure CLI login by using OIDC...
+azure	Sign in to Azure	2026-09-27T15:56:10.0625711Z Azure CLI login succeeds by using OIDC.
+azure	Read the cost export	﻿2026-09-27T15:56:10.0797818Z ##[group]Run az storage blob list --account-name moyoadeycostexports \
+azure	Read the cost export	2026-09-27T15:56:10.0798553Z ^[[36;1maz storage blob list --account-name moyoadeycostexports \^[[0m
+azure	Read the cost export	2026-09-27T15:56:10.0799157Z ^[[36;1m  --container-name cost-exports --prefix azure/ --auth-mode login \^[[0m
+azure	Read the cost export	2026-09-27T15:56:10.0799861Z ^[[36;1m  --query "length(@)" -o tsv^[[0m
+azure	Read the cost export	2026-09-27T15:56:10.1113610Z shell: /usr/bin/bash -e {0}
+azure	Read the cost export	2026-09-27T15:56:10.1114107Z ##[endgroup]
+azure	Read the cost export	2026-09-27T15:56:13.3694458Z 11
+azure	Post Sign in to Azure	﻿2026-09-27T15:56:13.4829247Z Post job cleanup.
+azure	Post Sign in to Azure	2026-09-27T15:56:13.5261907Z Clearing azure cli accounts from the local cache.
+azure	Post Sign in to Azure	2026-09-27T15:56:13.5272661Z [command]/usr/bin/az account clear
+azure	Complete job	﻿2026-09-27T15:56:14.0753999Z Cleaning up orphan processes
+azure	Complete job	2026-09-27T15:56:14.1410411Z Terminate orphan process: pid (2219) (python3)
+gcp	Set up job	﻿2026-09-27T15:56:06.4351223Z Current runner version: '2.337.0'
+gcp	Set up job	2026-09-27T15:56:06.4371139Z ##[group]Runner Image Provisioner
+gcp	Set up job	2026-09-27T15:56:06.4371693Z Hosted Compute Agent
+gcp	Set up job	2026-09-27T15:56:06.4372118Z Version: 20260828.587
+gcp	Set up job	2026-09-27T15:56:06.4372534Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+gcp	Set up job	2026-09-27T15:56:06.4372960Z Build Date: 2026-08-28T16:44:25Z
+gcp	Set up job	2026-09-27T15:56:06.4373426Z Worker ID: {fcd5b858-65ef-4477-a65d-11f20735d37a}
+gcp	Set up job	2026-09-27T15:56:06.4373848Z Azure Region: westus3
+gcp	Set up job	2026-09-27T15:56:06.4374454Z ##[endgroup]
+gcp	Set up job	2026-09-27T15:56:06.4375442Z ##[group]Operating System
+gcp	Set up job	2026-09-27T15:56:06.4375804Z Ubuntu
+gcp	Set up job	2026-09-27T15:56:06.4376179Z 24.04.5
+gcp	Set up job	2026-09-27T15:56:06.4376510Z LTS
+gcp	Set up job	2026-09-27T15:56:06.4376851Z ##[endgroup]
+gcp	Set up job	2026-09-27T15:56:06.4377224Z ##[group]Runner Image
+gcp	Set up job	2026-09-27T15:56:06.4377579Z Image: ubuntu-24.04
+gcp	Set up job	2026-09-27T15:56:06.4378049Z Version: 20260920.314.1
+gcp	Set up job	2026-09-27T15:56:06.4378742Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260920.314/images/ubuntu/Ubuntu2404-Readme.md
+gcp	Set up job	2026-09-27T15:56:06.4379828Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260920.314
+gcp	Set up job	2026-09-27T15:56:06.4380391Z ##[endgroup]
+gcp	Set up job	2026-09-27T15:56:06.4381094Z ##[group]GITHUB_TOKEN Permissions
+gcp	Set up job	2026-09-27T15:56:06.4382522Z Contents: read
+gcp	Set up job	2026-09-27T15:56:06.4382961Z Metadata: read
+gcp	Set up job	2026-09-27T15:56:06.4383302Z ##[endgroup]
+gcp	Set up job	2026-09-27T15:56:06.4384854Z Secret source: Actions
+gcp	Set up job	2026-09-27T15:56:06.4385686Z Cache mode: write
+gcp	Set up job	2026-09-27T15:56:06.4386206Z Prepare workflow directory
+gcp	Set up job	2026-09-27T15:56:06.4680029Z Prepare all required actions
+gcp	Set up job	2026-09-27T15:56:06.4712961Z Getting action download info
+gcp	Set up job	2026-09-27T15:56:06.7840027Z Download action repository 'google-github-actions/auth@v3' (SHA:7c6bc770dae815cd3e89ee6cdf493a5fab2cc093)
+gcp	Set up job	2026-09-27T15:56:07.4851476Z Download action repository 'google-github-actions/setup-gcloud@v3' (SHA:aa5489c8933f4cc7a4f7d45035b3b1440c9c10db)
+gcp	Set up job	2026-09-27T15:56:08.1944497Z Complete job name: gcp
+gcp	Sign in to GCP	﻿2026-09-27T15:56:08.2808750Z ##[group]Run google-github-actions/auth@v3
+gcp	Sign in to GCP	2026-09-27T15:56:08.2809666Z with:
+gcp	Sign in to GCP	2026-09-27T15:56:08.2810847Z   workload_identity_provider: projects/549618921441/locations/global/workloadIdentityPools/github/providers/github-actions
+gcp	Sign in to GCP	2026-09-27T15:56:08.2812622Z   service_account: github-cost-ingest@multicloud-cost-reporting-lab.iam.gserviceaccount.com
+gcp	Sign in to GCP	2026-09-27T15:56:08.2813752Z   create_credentials_file: true
+gcp	Sign in to GCP	2026-09-27T15:56:08.2814594Z   export_environment_variables: true
+gcp	Sign in to GCP	2026-09-27T15:56:08.2815274Z   universe: googleapis.com
+gcp	Sign in to GCP	2026-09-27T15:56:08.2815888Z   cleanup_credentials: true
+gcp	Sign in to GCP	2026-09-27T15:56:08.2816504Z   access_token_lifetime: 3600s
+gcp	Sign in to GCP	2026-09-27T15:56:08.2817353Z   access_token_scopes: https://www.googleapis.com/auth/cloud-platform
+gcp	Sign in to GCP	2026-09-27T15:56:08.2818267Z   id_token_include_email: false
+gcp	Sign in to GCP	2026-09-27T15:56:08.2818968Z ##[endgroup]
+gcp	Sign in to GCP	2026-09-27T15:56:08.5503383Z ⚠️ The "create_credentials_file" option is true, but the current GitHub workspace is empty. Did you forget to use "actions/checkout" before this step? If you do not intend to share authentication with future steps in this job, set "create_credentials_file" to false.
+gcp	Sign in to GCP	2026-09-27T15:56:08.8211660Z Created credentials file at "/home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json"
+gcp	Run google-github-actions/setup-gcloud@v3	﻿2026-09-27T15:56:08.9482082Z ##[group]Run google-github-actions/setup-gcloud@v3
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9483197Z with:
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9483894Z   version: latest
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9484785Z   skip_install: false
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9485380Z   cache: false
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9485865Z env:
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9487119Z   CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9489251Z   GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9491231Z   GOOGLE_GHA_CREDS_PATH: /home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9492816Z   CLOUDSDK_CORE_PROJECT: multicloud-cost-reporting-lab
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9493659Z   CLOUDSDK_PROJECT: multicloud-cost-reporting-lab
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9494571Z   GCLOUD_PROJECT: multicloud-cost-reporting-lab
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9495372Z   GCP_PROJECT: multicloud-cost-reporting-lab
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9496160Z   GOOGLE_CLOUD_PROJECT: multicloud-cost-reporting-lab
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:08.9496911Z ##[endgroup]
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:09.8899223Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/044ae70b-78ed-4b97-b710-656f45efbe84 -f /home/runner/work/_temp/7576e137-1fe6-4fff-a456-50d284b6130a
+gcp	Run google-github-actions/setup-gcloud@v3	2026-09-27T15:56:14.1323395Z Successfully authenticated
+gcp	Mint a token as the service account	﻿2026-09-27T15:56:14.2318145Z ##[group]Run gcloud auth list
+gcp	Mint a token as the service account	2026-09-27T15:56:14.2318432Z ^[[36;1mgcloud auth list^[[0m
+gcp	Mint a token as the service account	2026-09-27T15:56:14.2318638Z ^[[36;1mgcloud auth print-access-token > /dev/null^[[0m
+gcp	Mint a token as the service account	2026-09-27T15:56:14.2318979Z ^[[36;1mecho "Token issued for github-cost-ingest@multicloud-cost-reporting-lab.iam.gserviceaccount.com"^[[0m
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3421116Z shell: /usr/bin/bash -e {0}
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3421361Z env:
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3421713Z   CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3422265Z   GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3422764Z   GOOGLE_GHA_CREDS_PATH: /home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3423122Z   CLOUDSDK_CORE_PROJECT: multicloud-cost-reporting-lab
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3423355Z   CLOUDSDK_PROJECT: multicloud-cost-reporting-lab
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3423668Z   GCLOUD_PROJECT: multicloud-cost-reporting-lab
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3423873Z   GCP_PROJECT: multicloud-cost-reporting-lab
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3424228Z   GOOGLE_CLOUD_PROJECT: multicloud-cost-reporting-lab
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3424472Z   CLOUDSDK_METRICS_ENVIRONMENT: github-actions-setup-gcloud
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3424703Z   CLOUDSDK_METRICS_ENVIRONMENT_VERSION: 3.0.1
+gcp	Mint a token as the service account	2026-09-27T15:56:14.3424891Z ##[endgroup]
+gcp	Mint a token as the service account	2026-09-27T15:56:14.5920791Z 
+gcp	Mint a token as the service account	2026-09-27T15:56:14.5921131Z To set the active account, run:
+gcp	Mint a token as the service account	2026-09-27T15:56:14.5921396Z     $ gcloud config set account `ACCOUNT`
+gcp	Mint a token as the service account	2026-09-27T15:56:14.5921531Z 
+gcp	Mint a token as the service account	2026-09-27T15:56:14.5921627Z                              Credentialed Accounts
+gcp	Mint a token as the service account	2026-09-27T15:56:14.5921839Z ACTIVE  ACCOUNT
+gcp	Mint a token as the service account	2026-09-27T15:56:14.5922102Z *       github-cost-ingest@multicloud-cost-reporting-lab.iam.gserviceaccount.com
+gcp	Mint a token as the service account	2026-09-27T15:56:15.5391533Z Token issued for github-cost-ingest@multicloud-cost-reporting-lab.iam.gserviceaccount.com
+gcp	Post Sign in to GCP	﻿2026-09-27T15:56:15.5466539Z Post job cleanup.
+gcp	Post Sign in to GCP	2026-09-27T15:56:15.6074611Z Removed exported credentials at "/home/runner/work/multicloud-cost-reporting/multicloud-cost-reporting/gha-creds-02c662a1d8fdfbc9.json".
+gcp	Complete job	﻿2026-09-27T15:56:15.6182252Z Cleaning up orphan processes
+aws	Set up job	﻿2026-09-27T15:56:07.5242484Z Current runner version: '2.337.0'
+aws	Set up job	2026-09-27T15:56:07.5268237Z ##[group]Runner Image Provisioner
+aws	Set up job	2026-09-27T15:56:07.5269170Z Hosted Compute Agent
+aws	Set up job	2026-09-27T15:56:07.5270107Z Version: 20260828.587
+aws	Set up job	2026-09-27T15:56:07.5270772Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+aws	Set up job	2026-09-27T15:56:07.5271508Z Build Date: 2026-08-28T16:44:25Z
+aws	Set up job	2026-09-27T15:56:07.5272289Z Worker ID: {283d62f2-20a2-4a8c-adb2-425f5c1fba4b}
+aws	Set up job	2026-09-27T15:56:07.5273002Z Azure Region: westus
+aws	Set up job	2026-09-27T15:56:07.5273649Z ##[endgroup]
+aws	Set up job	2026-09-27T15:56:07.5275288Z ##[group]Operating System
+aws	Set up job	2026-09-27T15:56:07.5275960Z Ubuntu
+aws	Set up job	2026-09-27T15:56:07.5276578Z 24.04.5
+aws	Set up job	2026-09-27T15:56:07.5277133Z LTS
+aws	Set up job	2026-09-27T15:56:07.5277729Z ##[endgroup]
+aws	Set up job	2026-09-27T15:56:07.5278305Z ##[group]Runner Image
+aws	Set up job	2026-09-27T15:56:07.5278896Z Image: ubuntu-24.04
+aws	Set up job	2026-09-27T15:56:07.5279740Z Version: 20260920.314.1
+aws	Set up job	2026-09-27T15:56:07.5280891Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260920.314/images/ubuntu/Ubuntu2404-Readme.md
+aws	Set up job	2026-09-27T15:56:07.5282764Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260920.314
+aws	Set up job	2026-09-27T15:56:07.5283765Z ##[endgroup]
+aws	Set up job	2026-09-27T15:56:07.5284948Z ##[group]GITHUB_TOKEN Permissions
+aws	Set up job	2026-09-27T15:56:07.5287031Z Contents: read
+aws	Set up job	2026-09-27T15:56:07.5287783Z Metadata: read
+aws	Set up job	2026-09-27T15:56:07.5288355Z ##[endgroup]
+aws	Set up job	2026-09-27T15:56:07.5290743Z Secret source: Actions
+aws	Set up job	2026-09-27T15:56:07.5291939Z Cache mode: write
+aws	Set up job	2026-09-27T15:56:07.5293103Z Prepare workflow directory
+aws	Set up job	2026-09-27T15:56:07.5627999Z Prepare all required actions
+aws	Set up job	2026-09-27T15:56:07.5676993Z Getting action download info
+aws	Set up job	2026-09-27T15:56:07.9470769Z Download action repository 'aws-actions/configure-aws-credentials@v6' (SHA:e1253824e5c10ff9df46874f81ed3ec929e19cfd)
+aws	Set up job	2026-09-27T15:56:08.4751459Z Complete job name: aws
+aws	Sign in to AWS	﻿2026-09-27T15:56:08.5595578Z ##[group]Run aws-actions/configure-aws-credentials@v6
+aws	Sign in to AWS	2026-09-27T15:56:08.5596596Z with:
+aws	Sign in to AWS	2026-09-27T15:56:08.5597198Z   role-to-assume: arn:aws:iam::495599741450:role/github-cost-ingest
+aws	Sign in to AWS	2026-09-27T15:56:08.5597926Z   aws-region: eu-west-2
+aws	Sign in to AWS	2026-09-27T15:56:08.5598415Z   audience: sts.amazonaws.com
+aws	Sign in to AWS	2026-09-27T15:56:08.5599099Z ##[endgroup]
+aws	Sign in to AWS	2026-09-27T15:56:08.9525001Z Assuming role with OIDC
+aws	Sign in to AWS	2026-09-27T15:56:09.4161500Z Authenticated as assumedRoleId AROAXGZAL5IFI7ZD4OOEF:GitHubActions
+aws	Read the cost export	﻿2026-09-27T15:56:09.8977755Z ##[group]Run aws sts get-caller-identity --query Arn --output text
+aws	Read the cost export	2026-09-27T15:56:09.8978450Z ^[[36;1maws sts get-caller-identity --query Arn --output text^[[0m
+aws	Read the cost export	2026-09-27T15:56:09.8979079Z ^[[36;1maws s3 ls s3://moyoadey-cost-exports/cost-exports/ --recursive | wc -l^[[0m
+aws	Read the cost export	2026-09-27T15:56:09.9263143Z shell: /usr/bin/bash -e {0}
+aws	Read the cost export	2026-09-27T15:56:09.9263590Z env:
+aws	Read the cost export	2026-09-27T15:56:09.9263926Z   AWS_DEFAULT_REGION: eu-west-2
+aws	Read the cost export	2026-09-27T15:56:09.9264298Z   AWS_REGION: eu-west-2
+aws	Read the cost export	2026-09-27T15:56:09.9265185Z   AWS_ACCESS_KEY_ID: ***
+aws	Read the cost export	2026-09-27T15:56:09.9265694Z   AWS_SECRET_ACCESS_KEY: ***
+aws	Read the cost export	2026-09-27T15:56:09.9271760Z   AWS_SESSION_TOKEN: ***
+aws	Read the cost export	2026-09-27T15:56:09.9272060Z ##[endgroup]
+aws	Read the cost export	2026-09-27T15:56:14.4330669Z arn:aws:sts::495599741450:assumed-role/github-cost-ingest/GitHubActions
+aws	Read the cost export	2026-09-27T15:56:15.7123214Z 3
+aws	Post Sign in to AWS	﻿2026-09-27T15:56:15.7305813Z Post job cleanup.
+aws	Complete job	﻿2026-09-27T15:56:15.8120421Z Cleaning up orphan processes

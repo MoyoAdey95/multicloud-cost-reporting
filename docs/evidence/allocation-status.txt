@@ -1,0 +1,16 @@
++--------------+-------------------+--------+
+| ProviderName | allocation_status | billed |
++--------------+-------------------+--------+
+| NULL         | NULL              | 1.3572 |
+| AWS          | NULL              | 0.3138 |
+| AWS          | Allocated         |  0.081 |
+| AWS          | Not taggable      |   0.02 |
+| AWS          | Unallocated       | 0.2127 |
+| Google Cloud | NULL              | 0.4192 |
+| Google Cloud | Allocated         | 0.0008 |
+| Google Cloud | Not taggable      | 0.2664 |
+| Google Cloud | Unallocated       |  0.152 |
+| Microsoft    | NULL              | 0.6243 |
+| Microsoft    | Allocated         | 0.6219 |
+| Microsoft    | Unallocated       | 0.0024 |
++--------------+-------------------+--------+

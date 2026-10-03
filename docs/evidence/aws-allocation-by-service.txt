@@ -1,0 +1,13 @@
++----------------------------------+-------------------+--------+
+|           ServiceName            |      project      | billed |
++----------------------------------+-------------------+--------+
+| Elastic Load Balancing           | aws-terraform-lab | 0.0794 |
+| Amazon Virtual Private Cloud     | unallocated       | 0.0731 |
+| Elastic Load Balancing           | unallocated       | 0.0629 |
+| AWS Cost Explorer                | unallocated       |   0.05 |
+| Amazon Elastic Container Service | unallocated       | 0.0443 |
+| Amazon Simple Storage Service    | unallocated       | 0.0017 |
+| AWS Secrets Manager              | aws-terraform-lab | 0.0015 |
+| AWS Secrets Manager              | unallocated       | 0.0006 |
+| Amazon Simple Storage Service    | aws-terraform-lab | 0.0001 |
++----------------------------------+-------------------+--------+

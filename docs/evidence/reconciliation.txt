@@ -1,0 +1,12 @@
++--------------+---------------+-----------------+---------------+------------+----------------------------------------------+
+| ProviderName | billing_month | pipeline_billed | source_billed | difference |                 source_name                  |
++--------------+---------------+-----------------+---------------+------------+----------------------------------------------+
+| AWS          |    2026-09-01 |        0.313619 |      0.313619 |          0 | AWS FOCUS export as loaded                   |
+| AWS          |    2026-10-01 |        0.000131 |      0.000131 |          0 | AWS FOCUS export as loaded                   |
+| Google Cloud |    2026-07-01 |        0.258903 |      0.258903 |          0 | GCP detailed usage export, cost plus credits |
+| Google Cloud |    2026-08-01 |               0 |             0 |          0 | GCP detailed usage export, cost plus credits |
+| Google Cloud |    2026-09-01 |            0.16 |          0.16 |          0 | GCP detailed usage export, cost plus credits |
+| Google Cloud |    2026-10-01 |        0.000271 |      0.000271 |          0 | GCP detailed usage export, cost plus credits |
+| Microsoft    |    2026-09-01 |        0.624261 |      0.624261 |          0 | Azure actual cost export as loaded           |
+| Microsoft    |    2026-10-01 |        0.000007 |      0.000007 |          0 | Azure actual cost export as loaded           |
++--------------+---------------+-----------------+---------------+------------+----------------------------------------------+
