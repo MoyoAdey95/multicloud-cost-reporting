@@ -124,4 +124,6 @@ module "reporting" {
   dataset_id      = "cost_reporting"
   raw_dataset_id  = module.ingestion.raw_dataset_id
   gcp_focus_table = var.gcp_focus_table
+
+  gcp_detailed_table = var.gcp_detailed_table
 }

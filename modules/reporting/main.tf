@@ -75,3 +75,21 @@ resource "google_bigquery_table" "cost_allocation" {
 
   depends_on = [google_bigquery_table.focus_all]
 }
+
+resource "google_bigquery_table" "reconciliation" {
+  project             = var.project_id
+  dataset_id          = google_bigquery_dataset.reporting.dataset_id
+  table_id            = "reconciliation"
+  deletion_protection = false
+
+  view {
+    query = templatefile("${path.module}/sql/reconciliation.sql", {
+      dataset            = "${var.project_id}.${google_bigquery_dataset.reporting.dataset_id}"
+      raw_dataset        = "${var.project_id}.${var.raw_dataset_id}"
+      gcp_detailed_table = var.gcp_detailed_table
+    })
+    use_legacy_sql = false
+  }
+
+  depends_on = [google_bigquery_table.focus_all]
+}

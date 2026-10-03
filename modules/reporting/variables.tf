@@ -22,3 +22,8 @@ variable "gcp_focus_table" {
   description = "Fully qualified GCP FOCUS export table, project.dataset.table."
   type        = string
 }
+
+variable "gcp_detailed_table" {
+  description = "Fully qualified GCP detailed usage export table, used only to reconcile."
+  type        = string
+}

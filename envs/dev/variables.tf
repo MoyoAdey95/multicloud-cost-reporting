@@ -130,3 +130,10 @@ variable "gcp_focus_table" {
   type        = string
   default     = "moyo-cloud-lab.gcp_billing_immutable_01614A_44C4CF_9E48D3_eu.gcp_billing_export_focus_01614A_44C4CF_9E48D3"
 }
+
+# The detailed export sits in billing_export, the dataset it was switched on in.
+variable "gcp_detailed_table" {
+  description = "GCP Cloud Billing detailed usage export table, project.dataset.table."
+  type        = string
+  default     = "moyo-cloud-lab.billing_export.gcp_billing_export_resource_v1_01614A_44C4CF_9E48D3"
+}
