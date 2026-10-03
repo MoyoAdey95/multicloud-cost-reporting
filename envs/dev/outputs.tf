@@ -32,3 +32,8 @@ output "raw_dataset_id" {
   description = "Dataset the export files are loaded into."
   value       = module.ingestion.raw_dataset_id
 }
+
+output "reporting_dataset_id" {
+  description = "Dataset holding the FOCUS views."
+  value       = module.reporting.dataset_id
+}

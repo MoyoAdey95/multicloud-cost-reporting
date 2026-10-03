@@ -115,3 +115,13 @@ module "ingestion" {
   raw_dataset_id      = "cost_raw"
   ingest_member       = module.github_oidc_gcp.service_account_member
 }
+
+module "reporting" {
+  source = "../../modules/reporting"
+
+  project_id      = var.gcp_project
+  location        = var.bq_location
+  dataset_id      = "cost_reporting"
+  raw_dataset_id  = module.ingestion.raw_dataset_id
+  gcp_focus_table = var.gcp_focus_table
+}
